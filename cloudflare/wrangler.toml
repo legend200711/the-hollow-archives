@@ -9,7 +9,7 @@ database_id = "67f43ff2-2f0d-47dc-8e63-844350e80020"
 
 [vars]
 # Set this to the exact public website origin, e.g. https://your-site.pages.dev
-ALLOWED_ORIGIN = "https://the-hollow-archives.nthntjrn.workers.dev"
+ALLOWED_ORIGIN = "https://legend200711.github.io"
 
 [observability]
 enabled = true
