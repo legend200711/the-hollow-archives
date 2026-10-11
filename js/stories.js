@@ -16,7 +16,11 @@ function showStory(story) {
  const modal = document.createElement("dialog"); modal.className = "story-dialog";
  const paras = String(story.body || "").split(/\n\s*\n/).map(p => `<p>${safeText(p).replace(/\n/g,"<br>")}</p>`).join("");
  modal.innerHTML = `<button class="dialog-close" aria-label="Close story">×</button><p class="eyebrow">${safeText(story.category || "Horror")}${story.date === "Demo story" ? " · DEMONSTRATION" : ""}</p><h2>${safeText(story.title)}</h2><p class="dialog-author">By ${safeText(story.author || "Anonymous")}</p><div class="dialog-body">${paras}</div>${story.date === "Demo story" ? '<p class="demo-note">Demonstration story — replace before launch.</p>' : ""}`;
- document.body.appendChild(modal); modal.showModal(); modal.querySelector(".dialog-close").addEventListener("click",()=>modal.close()); modal.addEventListener("close",()=>modal.remove());
+ // Attach narrator panel if available
+ if (window.Narrator) modal.appendChild(window.Narrator.attach(story));
+ document.body.appendChild(modal); modal.showModal();
+ modal.querySelector(".dialog-close").addEventListener("click",()=>modal.close());
+ modal.addEventListener("close",()=>{ if(window.Narrator) window.Narrator.detach(); modal.remove(); });
 }
 document.addEventListener("DOMContentLoaded", async () => {
  const featured = document.getElementById("featured-stories");

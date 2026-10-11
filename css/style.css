@@ -11,3 +11,44 @@
 
 /* Spam-trap field: kept off-screen for human visitors. */
 .website-field{position:absolute!important;left:-10000px!important;top:auto!important;width:1px!important;height:1px!important;overflow:hidden!important}
+
+/* ═══════════════════════════════════════════════════════════════
+   NARRATOR PANEL — Read Aloud feature
+   ═══════════════════════════════════════════════════════════════ */
+.narrator-panel{margin:28px 0 4px;border:1px solid rgba(114,186,255,.22);background:linear-gradient(135deg,#0a1525 0%,#0d1b2e 60%,#0a1220 100%);border-radius:4px;padding:18px 20px;position:relative;overflow:hidden}
+.narrator-panel:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 100% 0%,rgba(114,186,255,.07),transparent 60%);pointer-events:none}
+
+.narrator-top{display:flex;align-items:center;gap:9px;margin-bottom:14px}
+.narrator-icon{font-size:15px;line-height:1}
+.narrator-label{font-size:10px;letter-spacing:.2em;color:var(--blue);font-weight:700;text-transform:uppercase}
+.narrator-status{margin-left:auto;font-size:10px;letter-spacing:.08em;color:#4a8fc4;font-weight:600;transition:color .3s}
+.narrator-panel[data-state="playing"] .narrator-status{color:#72baff;animation:narrator-pulse 2s ease-in-out infinite}
+.narrator-panel[data-state="paused"]  .narrator-status{color:#8496aa}
+.narrator-panel[data-state="finished"] .narrator-status{color:#4a6a44}
+@keyframes narrator-pulse{0%,100%{opacity:1}50%{opacity:.55}}
+
+.narrator-controls{display:flex;gap:10px;margin-bottom:14px}
+.narrator-btn{width:46px;height:46px;border-radius:3px;border:1px solid rgba(114,186,255,.28);background:rgba(13,28,48,.8);color:var(--blue);font-size:16px;cursor:pointer;transition:background .2s,border-color .2s,transform .15s,opacity .2s;display:grid;place-items:center;-webkit-tap-highlight-color:transparent}
+.narrator-btn:hover:not(:disabled){background:rgba(38,125,194,.22);border-color:var(--blue);transform:translateY(-1px)}
+.narrator-btn:active:not(:disabled){transform:translateY(0)}
+.narrator-btn:disabled{opacity:.3;cursor:not-allowed;transform:none}
+.narrator-play{width:58px;font-size:18px}
+
+.narrator-options{display:flex;gap:12px;flex-wrap:wrap}
+.narrator-option-label{display:flex;flex-direction:column;gap:5px;flex:1;min-width:130px}
+.narrator-option-label>span{font-size:9px;letter-spacing:.15em;color:#7a8da3;text-transform:uppercase}
+.narrator-option-label select{background:#070d18;border:1px solid rgba(114,186,255,.2);color:var(--text);padding:8px 10px;font-size:11px;border-radius:2px;outline:none;cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%2372baff'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
+.narrator-option-label select:focus{border-color:var(--blue)}
+.narrator-option-label select option{background:#0d131e}
+
+.narrator-unsupported{font-size:11px;color:#7a8da3;margin:0;padding:4px 0}
+
+/* story-dialog integration */
+.story-dialog .narrator-panel{margin-top:28px}
+
+@media(max-width:540px){
+  .narrator-btn{width:44px;height:44px}
+  .narrator-play{width:52px}
+  .narrator-options{gap:10px}
+  .narrator-option-label{min-width:120px}
+}
