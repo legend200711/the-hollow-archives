@@ -1,0 +1,18 @@
+name = "hollow-archives-api"
+main = "src/index.js"
+compatibility_date = "2026-10-11"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "hollow-archives"
+database_id = "67f43ff2-2f0d-47dc-8e63-844350e80020"
+
+[vars]
+# Set this to the exact public website origin, e.g. https://your-site.pages.dev
+ALLOWED_ORIGIN = "https://the-hollow-archives.nthntjrn.workers.dev"
+
+[observability]
+enabled = true
+
+# Optional but recommended for public submissions. Add TURNSTILE_SECRET_KEY as a Worker secret.
+# The frontend also needs the matching public site key configured in submit.html.

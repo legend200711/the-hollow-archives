@@ -1,0 +1,1 @@
+Run Wrangler commands from this folder. See the project-root README.md for the full deployment sequence. Replace the D1 database ID and ALLOWED_ORIGIN in wrangler.toml before deployment. Never commit TURNSTILE_SECRET_KEY; add it with `npx wrangler secret put TURNSTILE_SECRET_KEY`.
